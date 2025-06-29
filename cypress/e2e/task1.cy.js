@@ -1,3 +1,5 @@
+/// <reference types="cypress" />
+
 describe('Selectors Task', () => {
     it('Test all red box elements', () => {
         cy.visit('https://demo.productionready.io/#/register');
