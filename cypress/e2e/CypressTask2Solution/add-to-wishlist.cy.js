@@ -15,7 +15,7 @@ describe('Validate adding product to wishlist and taking full page screenshot', 
 
         cy.get('.header .greet.welcome').should('contain', 'Welcome');
 
-        cy.visit('https://magento.softwaretestingboard.com/push-it-messenger-bag.html');
+        cy.visit('/push-it-messenger-bag.html');
 
         cy.get('a[data-action="add-to-wishlist"]').click();
 

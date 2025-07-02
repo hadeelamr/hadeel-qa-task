@@ -1,11 +1,13 @@
-const { defineConfig } = require("cypress");
+const { defineConfig } = require('cypress');
 
 module.exports = defineConfig({
   e2e: {
-    watchForFileChanges: false,
-
+    baseUrl: 'https://magento.softwaretestingboard.com',
+    defaultCommandTimeout: 15000,
+    video: true,
+    videoCompression: 20,
     setupNodeEvents(on, config) {
-      // implement node event listeners here
-    }
-  }
+      // Implement node event listeners here
+    },
+  },
 });
