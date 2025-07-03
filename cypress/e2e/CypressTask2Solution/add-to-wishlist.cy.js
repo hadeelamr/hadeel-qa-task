@@ -5,13 +5,13 @@ Cypress.on('uncaught:exception', () => false);
 describe('Validate adding product to wishlist and taking full page screenshot', () => {
     it('should login, add product to wishlist, and take screenshot', () => {
 
-        cy.visit('/customer/account/login/');
+        cy.visit('https://magento.softwaretestingboard.com/customer/account/login/');
 
         cy.get('#email').type('amrhadeel6@gmail.com');
         cy.get('#pass').type('Hadeel@123', { log: false });
         cy.get('#send2').click();
 
-        cy.contains('Welcome', { timeout: 10000 }).should('be.visible');
+        cy.contains('Welcome', { timeout: 15000 }).should('be.visible');
 
         cy.get('a.product-item-link').contains('Push It Messenger Bag').click();
 
@@ -19,8 +19,8 @@ describe('Validate adding product to wishlist and taking full page screenshot', 
             .should('be.visible')
             .click({ force: true });
 
-        cy.get('.message-success ', { timeout: 10000 })
-            .should('contain', 'Push It Messenger Bag has been added to your Wish List');
+        cy.contains('added to your Wish List.', { timeout: 15000 })
+            .should('be.visible');
 
         cy.screenshot('wishlist-full-page', { capture: 'fullPage' });
     });

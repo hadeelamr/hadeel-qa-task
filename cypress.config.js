@@ -1,22 +1,17 @@
-const { defineConfig } = require('cypress');
+const { defineConfig } = require("cypress");
 
 module.exports = defineConfig({
+  reporter: "cypress-mochawesome-reporter",
+  reporterOptions: {
+    reportDir: "cypress/reports",
+    overwrite: false,
+    html: true,
+    json: false,
+  },
   e2e: {
-    baseUrl: 'https://magento.softwaretestingboard.com',
-    defaultCommandTimeout: 15000,
-    video: true,
-    videoCompression: 20,
-
-    reporter: "mochawesome",
-    reporterOptions: {
-      reportDir: "cypress/reports",
-      overwrite: false,
-      html: true,
-      json: false,
-    },
-
     setupNodeEvents(on, config) {
-      // Implement node event listeners here
+      require("cypress-mochawesome-reporter/plugin")(on);
     },
+    specPattern: "cypress/e2e/**/*.cy.{js,jsx,ts,tsx}",
   },
 });
